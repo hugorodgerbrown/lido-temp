@@ -10,7 +10,7 @@ console.log('x');
 
 // Create and populate the data table.
 var data = google.visualization.arrayToDataTable([
-['Date', 'Temp', '14c'],
+['Date', 'Daily Temp', 'Wetsuit Threshold'],
     ['28-Mar', 0, 14],
     ['29-Mar', 3.9, 14],
     ['30-Mar', 0, 14],
@@ -77,9 +77,9 @@ var data = google.visualization.arrayToDataTable([
 // Create and draw the visualization.
 var ac = new google.visualization.ComboChart(document.getElementById('visualization'));
 ac.draw(data, {
-title : 'Daily Water Temperature, Brockwell Lido, 2013',
+title : 'Daily Water Temperature, Brockwell Lido, 2013 (@brockwelllido)',
 width: 1200,
-height: 400,
+height: 600,
 vAxis: {title: "Temp (C)"},
 seriesType: "bars",
 series: {1: {type: "steppedArea"}}
@@ -88,6 +88,12 @@ series: {1: {type: "steppedArea"}}
 </script>
 </head>
 <body>
-<div id="visualization" style="width: 900px; height: 500px;"></div>
+    <h1>Water Temperature at Brockwell Lido, 2013 Season</h1>
+    <p>Temperatures taken from @brockwelllido Tweets</p>
+    <p>Hover over bars to see exact daily values.</p>
+<div id="visualization"></div>
+    <p>Red line used to illustrate temperature at which
+        I (@hugorodgerbrown) would consider it warm enough to swim without 
+        a wetsuit (14<sup>o</sup>C).</p>
 </body>
 </html>
