@@ -1,99 +1,103 @@
 <html>
-<head>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawVisualization);
+    <head>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawVisualization);
 
-function drawVisualization() {
-console.log('x');
+        function drawVisualization() {
+            // Create and populate the data table.
+            var data = google.visualization.arrayToDataTable([
+                ['Date', 'Daily Temp', 'Wetsuit Threshold'],
+                ['28-Mar', 0, 14],
+                ['29-Mar', 3.9, 14],
+                ['30-Mar', 0, 14],
+                ['31-Mar', 0, 14],
+                ['01-Apr', 3.5, 14],
+                ['02-Apr', 4.3, 14],
+                ['03-Apr', 4.8, 14],
+                ['04-Apr', 4.5, 14],
+                ['05-Apr', 0, 14],
+                ['06-Apr', 0, 14],
+                ['07-Apr', 4.9, 14],
+                ['08-Apr', 0, 14],
+                ['09-Apr', 0, 14],
+                ['10-Apr', 0, 14],
+                ['11-Apr', 6.4, 14],
+                ['12-Apr', 6.5, 14],
+                ['13-Apr', 0, 14],
+                ['14-Apr', 9.5, 14],
+                ['15-Apr', 8.9, 14],
+                ['16-Apr', 8.4, 14],
+                ['17-Apr', 12, 14],
+                ['18-Apr', 0, 14],
+                ['19-Apr', 12.3, 14],
+                ['20-Apr', 0, 14],
+                ['21-Apr', 12.4, 14],
+                ['22-Apr', 12.9, 14],
+                ['23-Apr', 13, 14],
+                ['24-Apr', 14.2, 14],
+                ['25-Apr', 15.6, 14],
+                ['26-Apr', 15.5, 14],
+                ['27-Apr', 15.1, 14],
+                ['28-Apr', 0, 14],
+                ['29-Apr', 14, 14],
+                ['30-Apr', 0, 14],
+                ['01-May', 0, 14],
+                ['02-May', 14.4, 14],
+                ['03-May', 0, 14],
+                ['04-May', 14.6, 14],
+                ['05-May', 14.9, 14],
+                ['06-May', 0, 14],
+                ['07-May', 16.3, 14],
+                ['08-May', 16.4, 14],
+                ['09-May', 15.5, 14],
+                ['10-May', 0, 14],
+                ['11-May', 15.2, 14],
+                ['12-May', 15.3, 14],
+                ['13-May', 0, 14],
+                ['14-May', 0, 14],
+                ['15-May', 0, 14],
+                ['16-May', 0, 14],
+                ['17-May', 0, 14],
+                ['18-May', 0, 14],
+                ['19-May', 14.1, 14],
+                ['20-May', 15.2, 14],
+                ['21-May', 13.4, 14],
+                ['22-May', 11.6, 14],
+                ['23-May', 13.1, 14],
+                ['24-May', 0, 14],
+                ['25-May', 0, 14],
+                ['26-May', 14.2, 14],
+                ['27-May', 14.2, 14],
+            ]);
 
-// Create and populate the data table.
-var data = google.visualization.arrayToDataTable([
-['Date', 'Daily Temp', 'Wetsuit Threshold'],
-    ['28-Mar', 0, 14],
-    ['29-Mar', 3.9, 14],
-    ['30-Mar', 0, 14],
-    ['31-Mar', 0, 14],
-    ['01-Apr', 3.5, 14],
-    ['02-Apr', 4.3, 14],
-    ['03-Apr', 4.8, 14],
-    ['04-Apr', 4.5, 14],
-    ['05-Apr', 0, 14],
-    ['06-Apr', 0, 14],
-    ['07-Apr', 4.9, 14],
-    ['08-Apr', 0, 14],
-    ['09-Apr', 0, 14],
-    ['10-Apr', 0, 14],
-    ['11-Apr', 6.4, 14],
-    ['12-Apr', 6.5, 14],
-    ['13-Apr', 0, 14],
-    ['14-Apr', 9.5, 14],
-    ['15-Apr', 8.9, 14],
-    ['16-Apr', 8.4, 14],
-    ['17-Apr', 12, 14],
-    ['18-Apr', 0, 14],
-    ['19-Apr', 12.3, 14],
-    ['20-Apr', 0, 14],
-    ['21-Apr', 12.4, 14],
-    ['22-Apr', 12.9, 14],
-    ['23-Apr', 13, 14],
-    ['24-Apr', 14.2, 14],
-    ['25-Apr', 15.6, 14],
-    ['26-Apr', 15.5, 14],
-    ['27-Apr', 15.1, 14],
-    ['28-Apr', 0, 14],
-    ['29-Apr', 14, 14],
-    ['30-Apr', 0, 14],
-    ['01-May', 0, 14],
-    ['02-May', 14.4, 14],
-    ['03-May', 0, 14],
-    ['04-May', 14.6, 14],
-    ['05-May', 14.9, 14],
-    ['06-May', 0, 14],
-    ['07-May', 16.3, 14],
-    ['08-May', 16.4, 14],
-    ['09-May', 15.5, 14],
-    ['10-May', 0, 14],
-    ['11-May', 15.2, 14],
-    ['12-May', 15.3, 14],
-    ['13-May', 0, 14],
-    ['14-May', 0, 14],
-    ['15-May', 0, 14],
-    ['16-May', 0, 14],
-    ['17-May', 0, 14],
-    ['18-May', 0, 14],
-    ['19-May', 14.1, 14],
-    ['20-May', 15.2, 14],
-    ['21-May', 13.4, 14],
-    ['22-May', 11.6, 14],
-    ['23-May', 13.1, 14],
-    ['24-May', 0, 14],
-    ['25-May', 0, 14],
-    ['26-May', 14.2, 14],
-    ['27-May', 14.2, 14],
-]);
-
-// Create and draw the visualization.
-var ac = new google.visualization.ComboChart(document.getElementById('visualization'));
-ac.draw(data, {
-title : 'Daily Water Temperature, Brockwell Lido, 2013 (@brockwelllido)',
-width: 1200,
-height: 600,
-vAxis: {title: "Temp (C)"},
-seriesType: "bars",
-series: {1: {type: "steppedArea"}}
-});
-}
-</script>
-</head>
-<body>
-    <h1>Water Temperature at Brockwell Lido, 2013 Season</h1>
-    <p>Temperatures taken from @brockwelllido Tweets</p>
-    <p>Hover over bars to see exact daily values.</p>
-<div id="visualization"></div>
-    <p>Red line used to illustrate temperature at which
-        I (@hugorodgerbrown) would consider it warm enough to swim without 
-        a wetsuit (14<sup>o</sup>C).</p>
-</body>
+            // Create and draw the visualization.
+            var ac = new google.visualization.ComboChart(document.getElementById('visualization'));
+            ac.draw(data, {
+                title : 'Daily Water Temperature, Brockwell Lido, 2013 (@brockwelllido)',
+                width: '100%',
+                height: '500',
+                vAxis: {title: "Temp (C)"},
+                seriesType: "bars",
+                series: {1: {type: "steppedArea"}}
+            });
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Water Temperature at Brockwell Lido, 2013 Season</h1>
+        {% if browser=='msie' %}
+            <div width="100%" style="background-color: red;line-height: 1.2em;color: white;padding: 10px;">
+                Sorry, Internet Explorer isn't supported; please use Chrome, Firefox, Safari instead.</div>
+        {% else %}
+            <p>Temperatures taken from @brockwelllido Tweets (hover over bars to see exact daily values).</p>
+            <div id="visualization"></div>
+            <p>Red line used to illustrate temperature at which
+                I (@hugorodgerbrown) would consider it warm enough to swim without 
+                a wetsuit (14<sup>o</sup>C).</p>
+            <p><i>(Disclaimer: this was done in an hour over the Bank Holiday - so don't expect too much. If, 
+                however, you would like to improve it or contribute, it's available on <a href="https://github.com/hugorodgerbrown/lido-temp">Github</a>.)</i></p>
+        {% endif %}
+    </body>
 </html>
