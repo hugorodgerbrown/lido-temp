@@ -12,9 +12,11 @@ from flask import (
 )
 from flask_oauth import OAuth
 from os import environ as env
+from models import User as U
 
 app = Flask(__name__)
 app.debug = True
+app.config['SQLALCHEMY_DATABASE_URI'] = env['SQLALCHEMY_DATABASE_URI']
 
 CONSUMER_KEY = env['CONSUMER_KEY']
 CONSUMER_SECRET = env['CONSUMER_SECRET']
