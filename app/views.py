@@ -52,19 +52,16 @@ def oauth_authorized(resp):
         flash(u'You denied the request to sign in.')
         return redirect(next_url)
 
-    # upsert the user
-    print resp
-    print resp['screen_name']
-    # user = User.get_user(resp['screen_name'])
-    # if user is None:
-    user = User(
-        username=resp['screen_name'],
-        token=resp['oauth_token'],
-        secret=resp['oauth_token_secret']
-    )
-    # else:
-    #     user.oauth_token = resp['oauth_token']
-    #     user.oauth_token_secret = resp['oauth_token_secret']
+    user = User.get_user(resp['screen_name'])
+    if user is None:
+        user = User(
+            username=resp['screen_name'],
+            token=resp['oauth_token'],
+            secret=resp['oauth_token_secret']
+        )
+    else:
+        user.oauth_token = resp['oauth_token']
+        user.oauth_token_secret = resp['oauth_token_secret']
     user.save()
 
     # use flask_login to set up the user session stuff
