@@ -1,6 +1,4 @@
-"""
-stats.py web app used to generate data for geckoboard.
-"""
+# app views
 from flask import (
     # Flask,
     render_template,
@@ -10,7 +8,6 @@ from flask import (
     url_for,
     flash
 )
-from flask.ext.login import current_user
 import flask_login
 from . import lido_app
 from auth import twitter

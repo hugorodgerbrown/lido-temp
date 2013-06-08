@@ -1,4 +1,5 @@
 # module declaration
+# this is where the Flask app itself is declared - as lido_app
 import os
 import flask
 
