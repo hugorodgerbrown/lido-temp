@@ -1,1 +1,1 @@
-web: gunicorn lido:runserver
+web: gunicorn runserver
