@@ -1,1 +1,1 @@
-web: gunicorn runserver -b "0.0.0.0:$PORT"
+web: gunicorn app:lido_app -b "0.0.0.0:$PORT"
