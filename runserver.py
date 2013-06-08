@@ -1,4 +1,4 @@
 # run the application
-from app import lido_app
-
-lido_app.run(debug=True)
+if __name__ == "__main__":
+    import app
+    app.lido_app.run(debug=True)
