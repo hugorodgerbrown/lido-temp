@@ -30,7 +30,7 @@ def login():
     )
 
 
-@lido_app.route("/logout")
+@lido_app.route('/logout')
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
@@ -47,6 +47,7 @@ def get_twitter_token(token=None):
 @lido_app.route('/oauth-authorized')
 @twitter.authorized_handler
 def oauth_authorized(resp):
+    print 'foo-bar'
     next_url = request.args.get('next') or url_for('index')
     if resp is None:
         flash(u'You denied the request to sign in.')
