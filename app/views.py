@@ -22,32 +22,22 @@ def index():
     )
 
 
-@lido_app.route('/login')
-def login():
-    return twitter.authorize(callback=url_for(
-        'oauth_authorized',
-        next=request.args.get('next') or request.referrer or None)
-    )
+    @lido_app.route('/login')
+    def login():
+        return twitter.authorize(
+            callback=url_for(
+                'oauth_authorized',
+                next=request.args.get('next') or request.referrer or None)
+        )
 
+    @twitter.tokengetter
+    def get_twitter_token(token=None):
+        return session.get('twitter_token')
 
-@lido_app.route('/logout')
-@flask_login.login_required
-def logout():
-    flask_login.logout_user()
-    session.pop('twitter_token', None)
-    session.pop('twitter_user', None)
-    return redirect('/')
-
-
-@twitter.tokengetter
-def get_twitter_token(token=None):
-    return session.get('twitter_token')
-
-
-@lido_app.route('/oauth-authorized')
-@twitter.authorized_handler
-def oauth_authorized(resp):
-    print 'foo-bar'
+    @lido_app.route('/oauth-authorized')
+    @twitter.authorized_handler
+    def oauth_authorized(resp):
+        print 'foo-bar'
     next_url = request.args.get('next') or url_for('index')
     if resp is None:
         flash(u'You denied the request to sign in.')
